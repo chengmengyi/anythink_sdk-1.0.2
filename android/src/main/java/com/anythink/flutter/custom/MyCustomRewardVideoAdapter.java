@@ -5,24 +5,103 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.anythink.core.api.ATAdInfo;
+import com.anythink.core.api.ATNetworkConfirmInfo;
 import com.anythink.core.api.AdError;
 import com.anythink.flutter.reward.ATAdRewardVideoManger;
 import com.anythink.flutter.reward.ATRewardVideoHelper;
+import com.anythink.rewardvideo.api.ATRewardVideoAd;
+import com.anythink.rewardvideo.api.ATRewardVideoExListener;
 import com.anythink.rewardvideo.unitgroup.api.CustomRewardVideoAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
+    ATRewardVideoAd rewardedVideoAd;
     String mUnitid;
     String mPayload;
 
-//    /***
-//     * load ad
-//     */
-//    private void startLoad(final Context context) {
-//
-//        final RewardedVideoAdListener rewardedVideoAdListener = new RewardedVideoAdListener() {
+    /***
+     * load ad
+     */
+    private void startLoad(final Context context) {
+
+        ATRewardVideoExListener rewardedVideoAdListener = new ATRewardVideoExListener() {
+            @Override
+            public void onRewardedVideoAdLoaded() {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdFailed(AdError adError) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdPlayStart(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdPlayEnd(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdPlayFailed(AdError adError, ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdClosed(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdPlayClicked(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onReward(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onDeeplinkCallback(ATAdInfo atAdInfo, boolean b) {
+
+            }
+
+            @Override
+            public void onDownloadConfirm(Context context, ATAdInfo atAdInfo, ATNetworkConfirmInfo atNetworkConfirmInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdAgainPlayStart(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdAgainPlayEnd(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdAgainPlayFailed(AdError adError, ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdAgainPlayClicked(ATAdInfo atAdInfo) {
+
+            }
+
+            @Override
+            public void onAgainReward(ATAdInfo atAdInfo) {
+
+            }
 //            @Override
 //            public void onError(Ad ad, AdError error) {
 //                if (mLoadListener != null) {
@@ -69,22 +148,19 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
 //                }
 //
 //            }
-//        };
-//
-//        rewardedVideoAd = new RewardedVideoAd(context.getApplicationContext(), mUnitid);
-//        RewardedVideoAd.RewardedVideoAdLoadConfigBuilder adConfig = rewardedVideoAd
-//                .buildLoadAdConfig()
-//                .withAdListener(rewardedVideoAdListener)
-//                .withFailOnCacheFailureEnabled(true)
-//                .withRVChainEnabled(true);
-//
+        };
+
+        rewardedVideoAd = new ATRewardVideoAd(context.getApplicationContext(), mUnitid);
+        rewardedVideoAd.setAdListener(rewardedVideoAdListener);
+        rewardedVideoAd.load();
+
 //        adConfig.withRewardData(new RewardData(mUserId, mUserData));
 //
 //        if (!TextUtils.isEmpty(mPayload)) {
 //            adConfig.withBid(mPayload);
 //        }
 //        rewardedVideoAd.loadAd(adConfig.build());
-//    }
+    }
 
     @Override
     public void destory() {
@@ -115,12 +191,12 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
 //            mPayload = serverExtras.get("payload").toString();
 //        }
 
-//        startLoad(context);
+        startLoad(context);
 
-        ATRewardVideoHelper helper = ATAdRewardVideoManger.getInstance().getHelper(mUnitid);
-        Map<String, Object> map = new HashMap<>();
-        map.put("tolerateTimeout",20);
-        helper.loadRewardedVideo(mUnitid,map);
+//        ATRewardVideoHelper helper = ATAdRewardVideoManger.getInstance().getHelper(mUnitid);
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("tolerateTimeout",20);
+//        helper.loadRewardedVideo(mUnitid,map);
     }
 
     @Override
