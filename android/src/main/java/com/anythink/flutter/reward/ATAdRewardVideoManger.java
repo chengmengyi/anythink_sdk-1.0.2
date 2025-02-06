@@ -83,7 +83,7 @@ public class ATAdRewardVideoManger implements HandleAnyThinkMethod {
         return true;
     }
 
-    private ATRewardVideoHelper getHelper(String placementId) {
+    public ATRewardVideoHelper getHelper(String placementId) {
 
         ATRewardVideoHelper helper;
 
