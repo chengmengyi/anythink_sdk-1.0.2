@@ -55,5 +55,11 @@ dependencies {
     compileOnly fileTree(dir: 'libs', include: '*.aar')
     compileOnly fileTree(dir: 'libs_compile', include: '*.jar')
     compileOnly 'androidx.annotation:annotation:1.1.0'
+//    implementation "com.anythink.sdk:core:6.4.27"
+//    implementation "com.anythink.sdk:nativead:6.4.27"
+//    implementation "com.anythink.sdk:banner:6.4.27"
+//    implementation "com.anythink.sdk:interstitial:6.4.27"
+//    implementation "com.anythink.sdk:rewardedvideo:6.4.27"
+//    implementation "com.anythink.sdk:splash:6.4.27"
 }
 

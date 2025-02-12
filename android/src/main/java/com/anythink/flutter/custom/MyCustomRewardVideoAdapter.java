@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.anythink.core.api.ATAdInfo;
+import com.anythink.core.api.ATBiddingListener;
 import com.anythink.core.api.ATNetworkConfirmInfo;
 import com.anythink.core.api.AdError;
 import com.anythink.flutter.reward.ATAdRewardVideoManger;
@@ -237,5 +238,10 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
     @Override
     public String getNetworkPlacementId() {
         return mUnitid;
+    }
+
+    @Override
+    public boolean startBiddingRequest(Context context, Map<String, Object> serverExtra, Map<String, Object> localExtra, ATBiddingListener biddingListener) {
+        return true;
     }
 }
