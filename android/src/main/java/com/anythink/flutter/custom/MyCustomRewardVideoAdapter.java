@@ -242,6 +242,7 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
 
     @Override
     public boolean startBiddingRequest(Context context, Map<String, Object> serverExtra, Map<String, Object> localExtra, ATBiddingListener biddingListener) {
+        Log.e("qwer","kk====startBiddingRequest");
         return true;
     }
 }
