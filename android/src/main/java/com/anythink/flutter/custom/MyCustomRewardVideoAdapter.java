@@ -16,9 +16,11 @@ import com.anythink.rewardvideo.unitgroup.api.CustomRewardVideoAdapter;
 import com.moloco.sdk.publisher.MediationInfo;
 import com.moloco.sdk.publisher.Moloco;
 import com.moloco.sdk.publisher.MolocoAd;
+import com.moloco.sdk.publisher.MolocoAdKt;
 import com.moloco.sdk.publisher.MolocoInitStatus;
 import com.moloco.sdk.publisher.MolocoInitializationListener;
 import com.moloco.sdk.publisher.init.MolocoInitParams;
+import com.moloco.sdk.publisher.privacy.MolocoPrivacy;
 
 import java.util.Map;
 
@@ -249,14 +251,13 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
         Log.e("qwer","kk=mUnitid===="+mUnitid);
         Log.e("qwer","kk=mUnitid===="+serverExtra);
 
-//        Moloco.initialize(new MolocoInitParams(context, "", new MediationInfo("moloco")), new MolocoInitializationListener() {
-//            @Override
-//            public void onMolocoInitializationStatus(@NonNull MolocoInitStatus molocoInitStatus) {
-//                Log.e("qwer","kkk===onMolocoInitializationStatus==="+molocoInitStatus.getInitialization().name()+"===="+molocoInitStatus.getDescription());
-//
-//
-//            }
-//        });
+        Moloco.initialize(new MolocoInitParams(context, "TESTBIRD:xN1yvyK9jNSWghVU", new MediationInfo("moloco")), new MolocoInitializationListener() {
+            @Override
+            public void onMolocoInitializationStatus(@NonNull MolocoInitStatus molocoInitStatus) {
+                Log.e("qwer","kkk===onMolocoInitializationStatus==="+molocoInitStatus.getInitialization().name()+"===="+molocoInitStatus.getDescription());
+
+            }
+        });
         return true;
     }
 }
