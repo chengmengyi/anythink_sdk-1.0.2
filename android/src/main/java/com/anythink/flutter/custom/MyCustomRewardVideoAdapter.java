@@ -2,20 +2,24 @@ package com.anythink.flutter.custom;
 
 import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.anythink.core.api.ATAdInfo;
 import com.anythink.core.api.ATBiddingListener;
 import com.anythink.core.api.ATNetworkConfirmInfo;
 import com.anythink.core.api.AdError;
-import com.anythink.flutter.reward.ATAdRewardVideoManger;
-import com.anythink.flutter.reward.ATRewardVideoHelper;
 import com.anythink.rewardvideo.api.ATRewardVideoAd;
 import com.anythink.rewardvideo.api.ATRewardVideoExListener;
 import com.anythink.rewardvideo.unitgroup.api.CustomRewardVideoAdapter;
+import com.moloco.sdk.publisher.MediationInfo;
+import com.moloco.sdk.publisher.Moloco;
+import com.moloco.sdk.publisher.MolocoAd;
+import com.moloco.sdk.publisher.MolocoInitStatus;
+import com.moloco.sdk.publisher.MolocoInitializationListener;
+import com.moloco.sdk.publisher.init.MolocoInitParams;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
@@ -225,14 +229,12 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
 
     @Override
     public String getNetworkSDKVersion() {
-//        return FacebookInitManager.getInstance().getNetworkVersion();
-        return "";
+        return "1.0.0";
     }
 
     @Override
     public String getNetworkName() {
-//        return FacebookInitManager.getInstance().getNetworkName();
-        return "";
+        return "moloco";
     }
 
     @Override
@@ -243,6 +245,18 @@ public class MyCustomRewardVideoAdapter extends CustomRewardVideoAdapter {
     @Override
     public boolean startBiddingRequest(Context context, Map<String, Object> serverExtra, Map<String, Object> localExtra, ATBiddingListener biddingListener) {
         Log.e("qwer","kk====startBiddingRequest");
+        mUnitid= (String) serverExtra.get("unit_id");
+        Log.e("qwer","kk=mUnitid===="+mUnitid);
+        Log.e("qwer","kk=mUnitid===="+serverExtra);
+
+//        Moloco.initialize(new MolocoInitParams(context, "", new MediationInfo("moloco")), new MolocoInitializationListener() {
+//            @Override
+//            public void onMolocoInitializationStatus(@NonNull MolocoInitStatus molocoInitStatus) {
+//                Log.e("qwer","kkk===onMolocoInitializationStatus==="+molocoInitStatus.getInitialization().name()+"===="+molocoInitStatus.getDescription());
+//
+//
+//            }
+//        });
         return true;
     }
 }
